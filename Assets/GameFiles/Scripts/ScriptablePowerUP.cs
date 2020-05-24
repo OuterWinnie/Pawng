@@ -13,4 +13,5 @@ public class ScriptablePowerUP : ScriptableObject
 	public bool hasDeflect;
 
 	public bool hasTeleport;
+    public bool hasBig;
 }

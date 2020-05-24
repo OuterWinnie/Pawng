@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: 16804e85cc4a55646bde68fd4625fced
+guid: b4820a98f6da3be44bbc18d8376ac206
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 21300000
-    second: wall
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -30,13 +27,13 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 25
-  maxTextureSize: 512
+  textureFormat: 1
+  maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
-    aniso: 1
-    mipBias: 0
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -46,7 +43,7 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -67,7 +64,7 @@ TextureImporter:
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -79,7 +76,7 @@ TextureImporter:
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -91,7 +88,7 @@ TextureImporter:
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,45 +97,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: wall
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 46.02675
-        width: 512
-        height: 419.9465
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5000001}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -251, y: -208}
-        - {x: -256, y: -203}
-        - {x: -256, y: 203}
-        - {x: -251, y: 208}
-        - {x: -246, y: 210}
-        - {x: 246, y: 210}
-        - {x: 251, y: 208}
-        - {x: 256, y: 202}
-        - {x: 256, y: -203}
-        - {x: 251, y: -208}
-        - {x: 246, y: -210}
-        - {x: -246, y: -210}
-      physicsShape:
-      - - {x: -256, y: 210}
-        - {x: -256, y: -210}
-        - {x: 247, y: -210}
-        - {x: 256, y: -202}
-        - {x: 256, y: 210}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 470a70e29a52454db5f444e847facb99
-      internalID: 21300000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

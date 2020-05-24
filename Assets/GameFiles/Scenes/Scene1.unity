@@ -2363,6 +2363,7 @@ MonoBehaviour:
   storedPowerUPs:
   - {fileID: 11400000, guid: 6a8f024aac62c2f4f9dd9a6111f076d0, type: 2}
   - {fileID: 11400000, guid: 22379848cc2cdfc48817158712ca3b84, type: 2}
+  - {fileID: 11400000, guid: 15cfd3b6c9622da4aa8ed3bc0f09aefa, type: 2}
   PowerUPDisplayer1: {fileID: 158}
   PowerUPDisplayer2: {fileID: 154}
   counterToRespawn: 30
@@ -2440,6 +2441,7 @@ MonoBehaviour:
   storedPowerUPs:
   - {fileID: 11400000, guid: 6a8f024aac62c2f4f9dd9a6111f076d0, type: 2}
   - {fileID: 11400000, guid: 22379848cc2cdfc48817158712ca3b84, type: 2}
+  - {fileID: 11400000, guid: 15cfd3b6c9622da4aa8ed3bc0f09aefa, type: 2}
   PowerUPDisplayer1: {fileID: 158}
   PowerUPDisplayer2: {fileID: 154}
   counterToRespawn: 30
@@ -2760,8 +2762,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d9d570a5b7d844fb0c98af25ed50c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 0
   right: 1
+  left: 0
   player1: 0
   player2: 0
 --- !u!114 &149
@@ -3061,8 +3063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d9d570a5b7d844fb0c98af25ed50c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 1
   right: 0
+  left: 1
   player1: 0
   player2: 0
 --- !u!114 &161
@@ -3077,14 +3079,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76cede5ada65c94dbee3644f9d937d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedActive: 0
-  stopBall: 0
   hasSpeed: 0
   hasDeflect: 0
+  hasBig: 0
   deflectActive: 0
+  speedActive: 0
+  stopBall: 0
   player1Wall: {fileID: 15}
   player2Wall: {fileID: 7}
-  wallSeconds: 3
+  wallSeconds: 4
+  biggerSeconds: 10
   player1: 1
   player2: 0
   PowerUpKey: 113
@@ -3131,14 +3135,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76cede5ada65c94dbee3644f9d937d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedActive: 0
-  stopBall: 0
   hasSpeed: 0
   hasDeflect: 0
+  hasBig: 0
   deflectActive: 0
+  speedActive: 0
+  stopBall: 0
   player1Wall: {fileID: 15}
   player2Wall: {fileID: 7}
-  wallSeconds: 3
+  wallSeconds: 4
+  biggerSeconds: 10
   player1: 0
   player2: 1
   PowerUpKey: 275
@@ -3208,6 +3214,7 @@ GameObject:
   - component: {fileID: 1458157224}
   - component: {fileID: 1458157223}
   - component: {fileID: 1458157225}
+  - component: {fileID: 1458157226}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -3367,3 +3374,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1458157223}
   hideScore: 114
+  winnerGoals: 21
+--- !u!114 &1458157226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458157221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70802b5c4af9c704fb9ad4c73c706151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

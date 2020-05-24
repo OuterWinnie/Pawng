@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-	public bool left;
-
 	public bool right;
+
+	public bool left;
 
 	public int player1;
 
@@ -13,13 +13,13 @@ public class Goal : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (right)
+		if (left)
 		{
 			player1++;
 			Score.instance.TranslateScorePlayer1(player1);
 			Debug.Log(player1 + " : " + player2);
 		}
-		else if (left)
+		else if (right)
 		{
 			player2++;
 			Score.instance.TranslateScorePlayer2(player2);

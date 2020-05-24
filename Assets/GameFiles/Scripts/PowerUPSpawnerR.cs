@@ -36,12 +36,14 @@ public class PowerUPSpawnerR : MonoBehaviour
 		{
 			ball.player1GameObject.GetComponent<PowerUPInventoryR>().hasSpeed = storedPowerUPs[addPowerUp].hasSpeed;
 			ball.player1GameObject.GetComponent<PowerUPInventoryR>().hasDeflect = storedPowerUPs[addPowerUp].hasDeflect;
+            ball.player1GameObject.GetComponent<PowerUPInventoryR>().hasBig = storedPowerUPs[addPowerUp].hasBig;
 			PowerUPDisplayer1.ActivatePowerUP(storedPowerUPs[addPowerUp].icon);
 		}
 		if (ball.player2)
 		{
 			ball.player2GameObject.GetComponent<PowerUPInventoryR>().hasSpeed = storedPowerUPs[addPowerUp].hasSpeed;
 			ball.player2GameObject.GetComponent<PowerUPInventoryR>().hasDeflect = storedPowerUPs[addPowerUp].hasDeflect;
+            ball.player2GameObject.GetComponent<PowerUPInventoryR>().hasBig = storedPowerUPs[addPowerUp].hasBig;
 			PowerUPDisplayer2.ActivatePowerUP(storedPowerUPs[addPowerUp].icon);
 		}
 		StartCoroutine(RespawnPowerUP());
