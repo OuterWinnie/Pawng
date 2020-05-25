@@ -1,4 +1,3 @@
-// PlayerController
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,56 +12,53 @@ public class PlayerController : MonoBehaviour
 
 	public KeyCode right;
 
-	private new Rigidbody2D rigidbody2D;
+	private bool moveUp;
 
-	public bool moveUp;
+	private bool moveDown;
 
-	public bool moveDown;
+	private bool moveLeft;
 
-	public bool moveLeft;
-
-	public bool moveRight;
+	private bool moveRight;
+    private new Rigidbody2D rigidbody2D;
 
 	private void Awake()
 	{
+        //Accede al rigidbody2D.
 		rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
 	private void Update()
 	{
-		if (Input.GetKey(up))
+        //Controla el movimiento del jugador.
+		if(Input.GetKey(up))
 		{
-			Debug.Log("UP");
 			moveUp = true;
 		}
-		else if (Input.GetKeyUp(up))
+		else if(Input.GetKeyUp(up))
 		{
 			moveUp = false;
 		}
-		if (Input.GetKey(down))
+		if(Input.GetKey(down))
 		{
-			Debug.Log("Down");
 			moveDown = true;
 		}
-		else if (Input.GetKeyUp(down))
+		else if(Input.GetKeyUp(down))
 		{
 			moveDown = false;
 		}
-		if (Input.GetKey(left))
+		if(Input.GetKey(left))
 		{
-			Debug.Log("Left");
 			moveLeft = true;
 		}
-		else if (Input.GetKeyUp(left))
+		else if(Input.GetKeyUp(left))
 		{
 			moveLeft = false;
 		}
 		if (Input.GetKey(right))
 		{
-			Debug.Log("Right");
 			moveRight = true;
 		}
-		else if (Input.GetKeyUp(right))
+		else if(Input.GetKeyUp(right))
 		{
 			moveRight = false;
 		}
@@ -70,23 +66,24 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (moveUp)
+        //Ejecuta el movimiento del jugador.
+		if(moveUp)
 		{
 			rigidbody2D.velocity = base.transform.up * speed;
 		}
-		if (moveDown)
+		if(moveDown)
 		{
 			rigidbody2D.velocity = base.transform.up * -speed;
 		}
-		if (!moveUp && !moveDown)
+		if(!moveUp && !moveDown)
 		{
 			rigidbody2D.velocity = Vector3.zero;
 		}
-		if (moveLeft)
+		if(moveLeft)
 		{
 			rigidbody2D.velocity = base.transform.right * -speed;
 		}
-		if (moveRight)
+		if(moveRight)
 		{
 			rigidbody2D.velocity = base.transform.right * speed;
 		}

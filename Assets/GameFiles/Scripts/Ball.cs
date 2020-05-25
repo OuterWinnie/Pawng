@@ -1,4 +1,3 @@
-// Ball
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -6,26 +5,28 @@ public class Ball : MonoBehaviour
 	public int maxSpeed;
 
 	public int speed;
-
-	public GameObject player1GameObject;
-
-	public GameObject player2GameObject;
-
 	public bool player1;
 
 	public bool player2;
+    public GameObject player1GameObject;
+
+	public GameObject player2GameObject;
 
 	private new Rigidbody2D rigidbody2D;
 
 	private void Awake()
 	{
+        //Accede al rigidbody2d.
 		rigidbody2D = GetComponent<Rigidbody2D>();
+
+        //Ejecuta StartMatch para comenzar el partido.
 		StartMatch();
 	}
 
 	private void StartMatch()
 	{
-		if (Random.Range(0, 2) == 0)
+        //Decide aleatoriamente hacia que dirrecion se va a disparar la pelota.
+		if(Random.Range(0, 2) == 0)
 		{
 			Debug.Log("Left");
 			rigidbody2D.velocity = base.transform.right * -speed;
@@ -39,11 +40,13 @@ public class Ball : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+        //Controla que la pelota no supere una velocidad maxima.
 		rigidbody2D.velocity = Vector2.ClampMagnitude(rigidbody2D.velocity, maxSpeed);
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
+        //Almacena el ultimo jugador que toco la pelota.
 		if (other.gameObject.tag == "Player 1")
 		{
 			player1 = true;

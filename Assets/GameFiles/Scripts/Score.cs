@@ -1,4 +1,3 @@
-// Score
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,15 +8,12 @@ using System.IO;
 public class Score : MonoBehaviour
 {
 	public static Score instance;
-
 	public TMP_Text scoreText;
-
 	public KeyCode hideScore;
-    public int winnerGoals;
-    public int whosWinner;
-
+    
+    private int whosWinner;
+    private int winnerGoals;
 	private int player1Score = 0;
-
 	private int player2Score = 0;
 
 	private void Awake()

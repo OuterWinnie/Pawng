@@ -1,54 +1,70 @@
-// PowerUPInventoryR
 using System.Collections;
 using UnityEngine;
 
 public class PowerUPInventoryR : MonoBehaviour
 {
 
-    //"Si tienes" variables.
+    [Header("If has PowerUP")]
 	public bool hasSpeed;
 	public bool hasDeflect;
     public bool hasBig;
+    public bool hasPlayerSpeed;
 
-    //"Si esta activa" variables.
-    public bool deflectActive;
-    public bool speedActive;
-    public bool stopBall;
-
-	public GameObject player1Wall;
-	public GameObject player2Wall;
+    [Header("PowerUPs tweaks")]
 	public int wallSeconds;
     public int biggerSeconds;
-	public bool player1;
-	public bool player2;
+    public int playerSpeedSeconds;
+    public int newPlayerSpeed;
+
+    [Header("General access")]
+    public PlayerController player1Controller;
+    public PlayerController player2Controller;
+    public GameObject player1Wall;
+	public GameObject player2Wall;
 	public KeyCode PowerUpKey;
 	public PowerUPDisplayUI PowerUPDisplayer1;
 	public PowerUPDisplayUI PowerUPDisplayer2;
+
+    private bool player1;
+	private bool player2;
 	private Ball ball;
 	private int newSpeed = 20;
 
-	private void OnCollisionEnter2D(Collision2D other)
-	{
-		if(speedActive)
-		{
-			if (other.gameObject.tag == "Ball")
-			{
-				ball = other.gameObject.GetComponent<Ball>();
-			}
+    //"Si esta activa" variables.
+    private bool deflectActive;
+    private bool speedActive;
+    private bool stopBall;
 
-			ball.gameObject.transform.parent = base.transform;
-			ball.GetComponent<Rigidbody2D>().isKinematic = true;
-			stopBall = true;
-		}
-	}
+    
+    private void Awake()
+    {
+        //Comprueba que numero de jugador eres.
+        if(tag == "Player 1")
+        {
+            player1 = true;
+        }
+
+        //Comprueba que numero de jugador eres.
+        if(tag == "Player 2")
+        {
+            player2 = true;
+        }
+    }
 
 	private void Update()
 	{
         //Activa el PowerUP de velocidad.
-		if (Input.GetKeyDown(PowerUpKey) && hasSpeed)
+		if(Input.GetKeyDown(PowerUpKey) && hasSpeed)
 		{
 			speedActive = true;
 		}
+
+        //Activa el PowerUP de PlayerSpeed.
+        if(Input.GetKeyDown(PowerUpKey) && hasPlayerSpeed)
+        {   
+            hasPlayerSpeed = false;
+            StartCoroutine(ChangeSpeed());
+        }
 
         //Ejecuta el PowerUP de velocidad.
 		if(Input.GetKeyDown(PowerUpKey) && stopBall)
@@ -93,12 +109,58 @@ public class PowerUPInventoryR : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+        //Frena la pelota para la habilidad de Speed Ball.
 		if(stopBall == true)
 		{
 			ball.speed = 0;
 			ball.maxSpeed = 0;
 		}
 	}
+
+    private void OnCollisionEnter2D(Collision2D other)
+	{
+        //Conituacion del Speed Ball.
+		if(speedActive)
+		{
+			if (other.gameObject.tag == "Ball")
+			{
+				ball = other.gameObject.GetComponent<Ball>();
+                ball.gameObject.transform.parent = base.transform;
+                ball.GetComponent<Rigidbody2D>().isKinematic = true;
+			    stopBall = true;
+			}
+		}
+	}
+
+    private IEnumerator ChangeSpeed()
+    {
+        var stockSpeed = player1Controller.speed;
+
+        if(player1)
+        {
+            player1Controller.speed = newPlayerSpeed;
+        }
+
+        if(player2)
+        {
+            player2Controller.speed = newPlayerSpeed;
+        }
+
+        yield return new WaitForSeconds(playerSpeedSeconds);
+
+        if(player1)
+        {
+            player1Controller.speed = stockSpeed;
+            PowerUPDisplayer1.DeactivatedPowerUP();
+        }
+
+        if(player2)
+        {
+            player2Controller.speed = stockSpeed;
+            PowerUPDisplayer2.DeactivatedPowerUP();
+        }
+    }
+
 
     //Aplica el efecto Wall.
 	private IEnumerator RiseWall()
@@ -107,14 +169,12 @@ public class PowerUPInventoryR : MonoBehaviour
 		{
 			player1Wall.SetActive(true);
 			hasDeflect = false;
-			PowerUPDisplayer1.DeactivatedPowerUP();
 		}
 
 		if(player2 == true)
 		{
 			player2Wall.SetActive(true);
 			hasDeflect = false;
-			PowerUPDisplayer2.DeactivatedPowerUP();
 		}
 
 		yield return new WaitForSeconds(wallSeconds);
@@ -122,28 +182,29 @@ public class PowerUPInventoryR : MonoBehaviour
 		if(player1 == true)
 		{
 			player1Wall.SetActive(false);
+            PowerUPDisplayer1.DeactivatedPowerUP();
 		}
 
 		if(player2 == true)
 		{
 			player2Wall.SetActive(false);
+            PowerUPDisplayer2.DeactivatedPowerUP();
 		}
 	}
 
+    //Activa el PowerUP MakeBigger.
     private IEnumerator MakeBigger()
     {
         if(player1 == true)
         {
             transform.localScale += new Vector3(0,25,0);
             hasBig = false;
-			PowerUPDisplayer1.DeactivatedPowerUP();
         }
 
         if(player2 == true)
         {
             transform.localScale += new Vector3(0,25,0);
             hasBig = false;
-			PowerUPDisplayer2.DeactivatedPowerUP();
         }
 
         yield return new WaitForSeconds(biggerSeconds);
@@ -151,11 +212,13 @@ public class PowerUPInventoryR : MonoBehaviour
         if(player1 == true)
         {
             transform.localScale -= new Vector3(0,25,0);
+            PowerUPDisplayer1.DeactivatedPowerUP();
         }
 
         if(player2 == true)
         {
             transform.localScale -= new Vector3(0,25,0);
+            PowerUPDisplayer2.DeactivatedPowerUP();
         }
     }
 }

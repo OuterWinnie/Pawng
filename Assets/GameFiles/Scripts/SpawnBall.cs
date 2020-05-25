@@ -3,25 +3,35 @@ using UnityEngine;
 
 public class SpawnBall : MonoBehaviour
 {
-	public GameObject ball;
-
+    public static SpawnBall instance;
+	public GameObject ballPrefab;
 	public KeyCode reset;
-
 	private GameObject lastBall;
 
+    void Awake()
+    {
+        instance = this;
+    }
+
+
 	private void InstantiateBall()
-	{
-		GameObject lball = lastBall = Object.Instantiate(ball, base.transform.position, Quaternion.identity);
+	{   
+        //Spawnea la pelota.
+		GameObject lball = lastBall = Object.Instantiate(ballPrefab, base.transform.position, Quaternion.identity);
 	}
 
-	private void DestroyBall()
+	public void DestroyBall()
 	{
+        //Destruye la pelota.
 		Object.Destroy(lastBall);
+
+        //Vuelve a spawnear la pelota.
 		InstantiateBall();
 	}
 
 	private void Update()
 	{
+        //Si pulsas el boton reset se destruye la pelota.
 		if (Input.GetKeyDown(reset))
 		{
 			DestroyBall();

@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 72}
   - component: {fileID: 131}
   - component: {fileID: 54}
+  - component: {fileID: 50}
   - component: {fileID: 132}
   m_Layer: 5
   m_Name: Spawner2 - PowerUPBox
@@ -69,6 +70,7 @@ GameObject:
   - component: {fileID: 74}
   - component: {fileID: 134}
   - component: {fileID: 55}
+  - component: {fileID: 5}
   - component: {fileID: 135}
   m_Layer: 5
   m_Name: Spawner1 - PowerUPBox
@@ -77,6 +79,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &5
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebb7bf21b25e2ea47b639593399c5e62, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
+  m_LocalPosition: {x: 8.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 203.5, z: 1}
   m_Children: []
   m_Father: {fileID: 46}
@@ -737,7 +758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: -8.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 203.5, z: 1}
   m_Children: []
   m_Father: {fileID: 46}
@@ -859,6 +880,25 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!95 &50
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0154a036af47a994089be6f844ec8c18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &52
 Rigidbody2D:
   serializedVersion: 4
@@ -2364,6 +2404,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a8f024aac62c2f4f9dd9a6111f076d0, type: 2}
   - {fileID: 11400000, guid: 22379848cc2cdfc48817158712ca3b84, type: 2}
   - {fileID: 11400000, guid: 15cfd3b6c9622da4aa8ed3bc0f09aefa, type: 2}
+  - {fileID: 11400000, guid: fff74937f0098c6478b082dc8e6251d5, type: 2}
   PowerUPDisplayer1: {fileID: 158}
   PowerUPDisplayer2: {fileID: 154}
   counterToRespawn: 30
@@ -2442,6 +2483,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a8f024aac62c2f4f9dd9a6111f076d0, type: 2}
   - {fileID: 11400000, guid: 22379848cc2cdfc48817158712ca3b84, type: 2}
   - {fileID: 11400000, guid: 15cfd3b6c9622da4aa8ed3bc0f09aefa, type: 2}
+  - {fileID: 11400000, guid: fff74937f0098c6478b082dc8e6251d5, type: 2}
   PowerUPDisplayer1: {fileID: 158}
   PowerUPDisplayer2: {fileID: 154}
   counterToRespawn: 30
@@ -2574,7 +2616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9cb92cc944fdc4ba1e5c85ac81cffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 1965725966705657, guid: e8f3aa6aab6cbdc43881e9875e06bde6, type: 3}
+  ballPrefab: {fileID: 1965725966705657, guid: e8f3aa6aab6cbdc43881e9875e06bde6, type: 3}
   reset: 114
 --- !u!114 &142
 MonoBehaviour:
@@ -2764,8 +2806,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   right: 1
   left: 0
-  player1: 0
-  player2: 0
 --- !u!114 &149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3065,8 +3105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   right: 0
   left: 1
-  player1: 0
-  player2: 0
 --- !u!114 &161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3082,15 +3120,15 @@ MonoBehaviour:
   hasSpeed: 0
   hasDeflect: 0
   hasBig: 0
-  deflectActive: 0
-  speedActive: 0
-  stopBall: 0
-  player1Wall: {fileID: 15}
-  player2Wall: {fileID: 7}
+  hasPlayerSpeed: 0
   wallSeconds: 4
   biggerSeconds: 10
-  player1: 1
-  player2: 0
+  playerSpeedSeconds: 8
+  newPlayerSpeed: 8
+  player1Controller: {fileID: 165}
+  player2Controller: {fileID: 164}
+  player1Wall: {fileID: 15}
+  player2Wall: {fileID: 7}
   PowerUpKey: 113
   PowerUPDisplayer1: {fileID: 158}
   PowerUPDisplayer2: {fileID: 154}
@@ -3138,15 +3176,15 @@ MonoBehaviour:
   hasSpeed: 0
   hasDeflect: 0
   hasBig: 0
-  deflectActive: 0
-  speedActive: 0
-  stopBall: 0
-  player1Wall: {fileID: 15}
-  player2Wall: {fileID: 7}
+  hasPlayerSpeed: 0
   wallSeconds: 4
   biggerSeconds: 10
-  player1: 0
-  player2: 1
+  playerSpeedSeconds: 8
+  newPlayerSpeed: 8
+  player1Controller: {fileID: 165}
+  player2Controller: {fileID: 164}
+  player1Wall: {fileID: 15}
+  player2Wall: {fileID: 7}
   PowerUpKey: 275
   PowerUPDisplayer1: {fileID: 158}
   PowerUPDisplayer2: {fileID: 154}
@@ -3167,10 +3205,6 @@ MonoBehaviour:
   down: 274
   left: 0
   right: 0
-  moveUp: 0
-  moveDown: 0
-  moveLeft: 0
-  moveRight: 0
 --- !u!114 &165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3188,10 +3222,6 @@ MonoBehaviour:
   down: 115
   left: 0
   right: 0
-  moveUp: 0
-  moveDown: 0
-  moveLeft: 0
-  moveRight: 0
 --- !u!29 &166
 OcclusionCullingSettings:
   m_ObjectHideFlags: 0
@@ -3214,7 +3244,6 @@ GameObject:
   - component: {fileID: 1458157224}
   - component: {fileID: 1458157223}
   - component: {fileID: 1458157225}
-  - component: {fileID: 1458157226}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -3374,16 +3403,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1458157223}
   hideScore: 114
-  winnerGoals: 21
---- !u!114 &1458157226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458157221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70802b5c4af9c704fb9ad4c73c706151, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

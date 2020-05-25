@@ -9,8 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class WinnerScreen : MonoBehaviour
 {
-    public int whoWin;
-    public string usernameWinner;
+    private int whoWin;
 
     void Awake()
     {
@@ -56,7 +55,7 @@ public class WinnerScreen : MonoBehaviour
             if(whoWin == 2)
             GetComponent<TMP_Text>().text = data.username2.ToUpper() + " IS THE WINNER!";
 
-            Debug.Log("Loaded");
+            Debug.Log("Winner!");
         }
 
     }
