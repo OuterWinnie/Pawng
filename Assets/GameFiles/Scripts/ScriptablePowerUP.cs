@@ -5,6 +5,7 @@ public class ScriptablePowerUP : ScriptableObject
 {
 	public new string name;
 	public Sprite icon;
+    public bool active;
 	public bool hasSpeed;
 	public bool hasDeflect;
 	public bool hasPlayerSpeed;

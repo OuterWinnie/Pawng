@@ -57,6 +57,16 @@ public class PowerUPInventoryR : MonoBehaviour
 		if(Input.GetKeyDown(PowerUpKey) && hasSpeed)
 		{
 			speedActive = true;
+
+            if(player1 == true)
+            {
+                PowerUPDisplayer1.ActivateUIChangeColor();
+            }
+            else if(player2 == true)
+            {
+                PowerUPDisplayer2.ActivateUIChangeColor();
+            }
+            
 		}
 
         //Activa el PowerUP de PlayerSpeed.
@@ -136,25 +146,27 @@ public class PowerUPInventoryR : MonoBehaviour
     {
         var stockSpeed = player1Controller.speed;
 
-        if(player1)
+        if(player1 == true)
         {
             player1Controller.speed = newPlayerSpeed;
+            PowerUPDisplayer1.ActivateUIChangeColor();
         }
 
-        if(player2)
+        if(player2 == true)
         {
             player2Controller.speed = newPlayerSpeed;
+            PowerUPDisplayer2.ActivateUIChangeColor();
         }
 
         yield return new WaitForSeconds(playerSpeedSeconds);
 
-        if(player1)
+        if(player1 == true)
         {
             player1Controller.speed = stockSpeed;
             PowerUPDisplayer1.DeactivatedPowerUP();
         }
 
-        if(player2)
+        if(player2 == true)
         {
             player2Controller.speed = stockSpeed;
             PowerUPDisplayer2.DeactivatedPowerUP();
@@ -169,12 +181,14 @@ public class PowerUPInventoryR : MonoBehaviour
 		{
 			player1Wall.SetActive(true);
 			hasDeflect = false;
+            PowerUPDisplayer1.ActivateUIChangeColor();
 		}
 
 		if(player2 == true)
 		{
 			player2Wall.SetActive(true);
 			hasDeflect = false;
+            PowerUPDisplayer2.ActivateUIChangeColor();
 		}
 
 		yield return new WaitForSeconds(wallSeconds);
@@ -199,12 +213,15 @@ public class PowerUPInventoryR : MonoBehaviour
         {
             transform.localScale += new Vector3(0,25,0);
             hasBig = false;
+            PowerUPDisplayer1.ActivateUIChangeColor();
+            
         }
 
         if(player2 == true)
         {
             transform.localScale += new Vector3(0,25,0);
             hasBig = false;
+            PowerUPDisplayer2.ActivateUIChangeColor();
         }
 
         yield return new WaitForSeconds(biggerSeconds);

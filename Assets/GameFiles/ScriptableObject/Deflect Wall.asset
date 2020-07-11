@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Deflect Wall
   icon: {fileID: 21300000, guid: 16804e85cc4a55646bde68fd4625fced, type: 3}
+  active: 1
   hasSpeed: 0
   hasDeflect: 1
-  hasTeleport: 0
+  hasPlayerSpeed: 0
   hasBig: 0

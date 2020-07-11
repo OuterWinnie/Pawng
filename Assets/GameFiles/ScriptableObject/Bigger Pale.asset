@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bigger Pale
   icon: {fileID: 21300000, guid: b4820a98f6da3be44bbc18d8376ac206, type: 3}
+  active: 1
   hasSpeed: 0
   hasDeflect: 0
-  hasTeleport: 0
+  hasPlayerSpeed: 0
   hasBig: 1

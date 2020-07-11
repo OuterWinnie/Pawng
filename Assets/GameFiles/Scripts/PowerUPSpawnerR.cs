@@ -33,7 +33,7 @@ public class PowerUPSpawnerR : MonoBehaviour
 			ball.player1GameObject.GetComponent<PowerUPInventoryR>().hasDeflect = storedPowerUPs[addPowerUp].hasDeflect;
             ball.player1GameObject.GetComponent<PowerUPInventoryR>().hasBig = storedPowerUPs[addPowerUp].hasBig;
             ball.player1GameObject.GetComponent<PowerUPInventoryR>().hasPlayerSpeed = storedPowerUPs[addPowerUp].hasPlayerSpeed;
-			PowerUPDisplayer1.ActivatePowerUP(storedPowerUPs[addPowerUp].icon);
+			PowerUPDisplayer1.ActivatePowerUP(storedPowerUPs[addPowerUp]);
 		}
 		if (ball.player2)
 		{
@@ -41,7 +41,7 @@ public class PowerUPSpawnerR : MonoBehaviour
 			ball.player2GameObject.GetComponent<PowerUPInventoryR>().hasDeflect = storedPowerUPs[addPowerUp].hasDeflect;
             ball.player2GameObject.GetComponent<PowerUPInventoryR>().hasBig = storedPowerUPs[addPowerUp].hasBig;
             ball.player2GameObject.GetComponent<PowerUPInventoryR>().hasPlayerSpeed = storedPowerUPs[addPowerUp].hasPlayerSpeed;
-			PowerUPDisplayer2.ActivatePowerUP(storedPowerUPs[addPowerUp].icon);
+			PowerUPDisplayer2.ActivatePowerUP(storedPowerUPs[addPowerUp]);
 		}
 
         //Activa el temporizador para el respawn.
