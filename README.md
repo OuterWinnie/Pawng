@@ -2,6 +2,6 @@
 A Pong clone but with new things!
 
 TODO:
-- Option Menu Screen.
+- Input Menu Screen.
 - New PowerUPS.
 - PowerUP exaust warning.
