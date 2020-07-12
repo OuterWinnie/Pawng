@@ -15,6 +15,9 @@ public class Goal : MonoBehaviour
     void Awake()
     {
         Load();
+
+        if(autoStart == true)
+        SpawnBall.instance.DestroyBall();
     }
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -52,16 +55,19 @@ public class Goal : MonoBehaviour
     void Load()
     {
         //Si existe el archivo.
-        if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        if(File.Exists(Application.persistentDataPath + "/options.dat"))
         {
             //Carga el archvio de guardado.
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/options.dat", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
 
             //Carga los nombres de usuario.
-            autoStart = data.autoStart;
+            if(data.autoStart == 0)
+            autoStart = false;
+            else if(data.autoStart == 1)
+            autoStart = true;
 
             Debug.Log("Loaded");
         }

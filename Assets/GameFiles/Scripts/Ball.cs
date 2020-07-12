@@ -14,6 +14,9 @@ public class Ball : MonoBehaviour
     public GameObject player1GameObject;
 
 	public GameObject player2GameObject;
+    public AudioSource padel;
+    public AudioSource wall;
+    public AudioSource powerUP;
 
 	private new Rigidbody2D rigidbody2D;
     private bool avoidStuckY;
@@ -74,13 +77,31 @@ public class Ball : MonoBehaviour
 			player1 = true;
 			player2 = false;
 			player1GameObject = other.gameObject;
+            padel.Play();
 		}
+
 		if (other.gameObject.tag == "Player 2")
 		{
 			player2 = true;
 			player1 = false;
 			player2GameObject = other.gameObject;
+            padel.Play();
 		}
+
+        if(other.gameObject.tag == "Wall")
+        {
+            wall.Play();
+        }
+	}
+
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+        if(other.gameObject.tag == "PowerUPBox")
+        {
+            powerUP.Play();
+        }
+
 	}
 
     private IEnumerator checkSpeedNextFrame()

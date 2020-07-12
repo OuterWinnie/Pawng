@@ -18,7 +18,14 @@ public class MainMenu : MonoBehaviour
     public GameObject InputScore;
     public GameObject changeControlsButton;
     
-    private bool autoStart = false;
+    public bool autoStart = false;
+
+
+    void Awake()
+    {
+        if(File.Exists(Application.persistentDataPath + "/options.dat"))
+        LoadOptions();
+    }
     
     //Main Menu Buttons.
     public void InputUsername1()
@@ -71,6 +78,12 @@ public class MainMenu : MonoBehaviour
         //Abre el menu de opciones.
         optionButtons.SetActive(false);
         GameSettings.SetActive(true);
+
+        if(autoStart == false)
+        autoStartSettings.GetComponent<TMP_Text>().text = "AutoStart - Deactivated";
+
+        if(autoStart == true)
+        autoStartSettings.GetComponent<TMP_Text>().text = "AutoStart - Activate";
 	}
 
     public void ChangeStart()
@@ -103,6 +116,7 @@ public class MainMenu : MonoBehaviour
         //Vuelves al menu principal.
         mainButtons.SetActive(true);
         optionButtons.SetActive(false);
+        SaveOptions();
     }
 
     public void BackToOptionsMenu()
@@ -124,7 +138,8 @@ public class MainMenu : MonoBehaviour
         data.username1 = InputPlayer1.GetComponent<TMP_InputField>().text;
         data.username2 = InputPlayer2.GetComponent<TMP_InputField>().text;
         data.score = InputScore.GetComponent<TMP_InputField>().text;
-        data.autoStart = autoStart;
+        
+        SaveOptions();
 
         //Guarda los datos.
         bf.Serialize(file, data);
@@ -145,7 +160,8 @@ public class MainMenu : MonoBehaviour
             //Carga los nombres de usuario.
             InputPlayer1.GetComponent<TMP_InputField>().text = data.username1;
             InputPlayer2.GetComponent<TMP_InputField>().text = data.username2;
-            autoStart = data.autoStart;
+            
+            LoadOptions();
 
             Debug.Log("Loaded");
 
@@ -159,6 +175,39 @@ public class MainMenu : MonoBehaviour
             InputUsername1();
         }
     }
+
+    public void LoadOptions()
+    {
+        //Carga el archvio de guardado.
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/options.dat", FileMode.Open);
+        PlayerData data = (PlayerData)bf.Deserialize(file);
+        file.Close();
+
+        //Carga los nombres de usuario.
+        if(data.autoStart == 0)
+        autoStart = false;
+        else if(data.autoStart == 1)
+        autoStart = true;
+    }
+
+    public void SaveOptions()
+    {
+        //Nuevo archivo de guardado.
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/options.dat");
+        PlayerData data = new PlayerData();
+
+        if(autoStart == true)
+        data.autoStart = 1;
+        else if(autoStart == false)
+        data.autoStart = 0;
+
+        //Guarda los datos.
+        bf.Serialize(file, data);
+        file.Close();
+
+    }
 }
 
 [Serializable]
@@ -168,5 +217,5 @@ class PlayerData
     public  string username2;
     public string score;
     public string winner;
-    public bool autoStart;
+    public int autoStart;
 }
